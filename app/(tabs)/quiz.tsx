@@ -2,12 +2,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Animated,
-    Dimensions,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
+  Animated,
+  Dimensions,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { HapticTab } from '../../components/haptic-tab';
 import { ThemedView } from '../../components/themed-view';
@@ -31,22 +31,6 @@ export default function QuizScreen() {
   const progress = (currentQuestion + 1) / questions.length;
   const isLastQuestion = currentQuestion === questions.length - 1;
 
-  // Timer effect - STOPS when timerActive is false
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    
-    if (timerActive) {
-      timer = setInterval(() => {
-        setTimeElapsed(prev => prev + 1);
-      }, 1000);
-    }
-
-    return () => {
-      if (timer) {
-        clearInterval(timer);
-      }
-    };
-  }, [timerActive]);
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
